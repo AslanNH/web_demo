@@ -21,7 +21,7 @@ pipeline {
          stage('publish') {
             steps {
                 dir('/data') {
-                    kill -9 `ps -ef | grep java |grep web_demo | awk '{print$2}'`
+                    sh 'kill -9 `ps -ef | grep java |grep web_demo | awk '{print$2}'`'
                     sh 'JENKINS_NODE_COOKIE=dontKillMe nohup java -jar web_demo-0.0.1-SNAPSHOT.jar >web_demo.log 2>&1 &'
                 }
             }
