@@ -9,13 +9,13 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'mvn clean package dockerfile:build'
+                //sh 'mvn clean package dockerfile:build'
                 // 打标签
-                sh 'docker tag web_demo:latest 49.235.114.120:85/tensquare/webdemo:latest'
+                //sh 'docker tag web_demo:latest 49.235.114.120:85/tensquare/webdemo:latest'
 
                 //把镜像推送到harbor
-                sh 'docker login -u eric -p Eric123456 49.235.114.120:85'
-                sh 'docker push 49.235.114.120:85/tensquare/webdemo:latest'
+                //sh 'docker login -u eric -p Eric123456 49.235.114.120:85'
+                //sh 'docker push 49.235.114.120:85/tensquare/webdemo:latest'
             }
         }
     stage('publish') {
