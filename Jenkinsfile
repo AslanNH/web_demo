@@ -9,22 +9,9 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn clean package dockerfile:build'
             }
         }
-        stage('move') {
-            steps {
-               sh 'mv /var/lib/jenkins/workspace/web_dmeo_pipeline/target/web_demo-0.0.1-SNAPSHOT.jar /data/web_demo-0.0.1-SNAPSHOT.jar '
-               sleep 1
-            }
-        }
-         stage('publish') {
-            steps {
-                dir('/data') {
-                    sh 'kill -9 `ps -ef | grep java |grep web_demo | awk \'{print$2}\'`'
-                    sh 'JENKINS_NODE_COOKIE=dontKillMe nohup java -jar web_demo-0.0.1-SNAPSHOT.jar >web_demo.log 2>&1 &'
-                }
-            }
-        }
+
     }
 }
