@@ -16,6 +16,7 @@ pipeline {
                 //把镜像推送到harbor
                 //sh 'docker login -u eric -p Eric123456 49.235.114.120:85'
                 //sh 'docker push 49.235.114.120:85/tensquare/webdemo:latest'
+                echo '+++++++++++'
             }
         }
     stage('publish') {
