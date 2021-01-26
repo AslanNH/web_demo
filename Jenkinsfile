@@ -10,6 +10,8 @@ pipeline {
         stage('build') {
             steps {
                 sh 'mvn clean package dockerfile:build'
+                // 打标签
+                sh 'docker tag web_demo:latest 49.235.114.120:85/tensquare/webdemo:latest'
             }
         }
 
